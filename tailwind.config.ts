@@ -13,6 +13,28 @@ const config: Config = {
         'dm-mono': ['var(--font-dm-mono)', 'monospace'],
         'yatra-one': ['var(--font-yatra-one)', 'sans-serif'],
       },
+      colors: {
+        border: "hsl(var(--border))",
+        card: {
+          DEFAULT: "hsl(var(--card))",
+          foreground: "hsl(var(--card-foreground))",
+        },
+      },
+      keyframes: {
+        highlight: {
+          "0%": { backgroundColor: "transparent" },
+          "100%": { backgroundColor: "var(--highlight)" },
+        },
+        flash: {
+          "0%": { backgroundColor: "hsl(var(--card, 0 0% 100%))" },
+          "50%": { backgroundColor: "var(--highlight)" },
+          "100%": { backgroundColor: "hsl(var(--card, 0 0% 100%))" },
+        },
+      },
+      animation: {
+        highlight: "highlight 0.6s ease forwards",
+        flash: "flash 0.6s ease forwards",
+      },
     },
   },
   plugins: [],

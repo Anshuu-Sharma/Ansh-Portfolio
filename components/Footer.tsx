@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { CommitsGrid } from './ui/commits-grid';
 
 export default function Footer() {
   const [istTime, setIstTime] = useState('');
@@ -29,8 +30,8 @@ export default function Footer() {
         {/* Remarkable line + Let's work together */}
         <div className="footer-cta-block">
           <p className="footer-remarkable">Let&apos;s build and ship something remarkable. Open
-to agency collaborations, freelance work, and
-fully remote full-time opportunities.</p>
+            to agency collaborations, freelance work, and
+            fully remote full-time opportunities.</p>
           <div className="work-together-wrap">
             <a
               className="work-together-pill"
@@ -40,7 +41,7 @@ fully remote full-time opportunities.</p>
             >
               <span className="work-together-label">Let&apos;s work together</span>
               <svg className="work-together-arrow" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M1 11L11 1M11 1H1M11 1V11" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </a>
           </div>
@@ -87,13 +88,9 @@ fully remote full-time opportunities.</p>
         </div>
       </div>
 
-      {/* Large bottom title with glow */}
-      <div className="footer-hero-wrap">
-        <span className="footer-hero-marquee">
-          <span className="footer-hero-text">|| Ansh Sharma ||</span>
-          <span className="footer-hero-text" aria-hidden="true">|| Ansh Sharma ||</span>
-          <span className="footer-hero-text" aria-hidden="true">|| Ansh Sharma ||</span>
-        </span>
+      {/* Dynamic Commits Grid instead of marquee */}
+      <div className="flex justify-center items-center pt-10 pb-8 px-4 w-full">
+        <CommitsGrid text="ANSH SHARMA" />
       </div>
     </footer>
   );
