@@ -1,107 +1,34 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { VscHome, VscLayers, VscAccount, VscBriefcase, VscMail } from 'react-icons/vsc';
+import Dock from './ui/Dock';
 
 export default function Navbar() {
-  const [showTransition, setShowTransition] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      // Show mini-nav as soon as we hide the original navbar (small scroll), not after hero
-      const scrollThreshold = 60;
-      const scrolled = window.scrollY > scrollThreshold;
-      setIsScrolled(scrolled);
-      if (!scrolled) {
-        setIsMenuOpen(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const handleNavClick = (section: string) => {
-    setShowTransition(true);
-    setIsMenuOpen(false);
-    setTimeout(() => {
-      const element = document.getElementById(section);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
-      setTimeout(() => setShowTransition(false), 300);
-    }, 150);
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
+  const items = [
+    { icon: <VscHome size={20} className="text-neutral-700" />, label: 'Home', onClick: () => handleNavClick('hero') },
+    { icon: <VscLayers size={20} className="text-neutral-700" />, label: 'Projects', onClick: () => handleNavClick('projects') },
+    { icon: <VscAccount size={20} className="text-neutral-700" />, label: 'About', onClick: () => handleNavClick('about') },
+    { icon: <VscBriefcase size={20} className="text-neutral-700" />, label: 'Services', onClick: () => handleNavClick('services') },
+    { icon: <VscMail size={20} className="text-neutral-700" />, label: 'Contact', onClick: () => handleNavClick('footer') },
+  ];
+
   return (
-    <>
-      {/* Original navbar - shown when not scrolled */}
-      <nav className={`navbar ${isScrolled ? 'navbar-hidden' : ''}`}>
-        <div className="container">
-          <div className="navbar-contain">
-            <div className="logo">|| ANSH SHARMA ||</div>
-            <ul className="nav-links">
-              <span className="nav-link" onClick={() => handleNavClick('projects')}>
-                Projects
-              </span>
-              <span className="nav-link" onClick={() => handleNavClick('about')}>
-                About me
-              </span>
-              <span className="nav-link" onClick={() => handleNavClick('services')}>
-                Services
-              </span>
-              <span className="nav-link" onClick={() => handleNavClick('footer')}>
-                Contact
-              </span>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      {/* Floating navbar - shown when scrolled */}
-      <nav className={`floating-navbar ${isScrolled ? 'floating-navbar-visible' : ''}`}>
-        <div
-          className={`floating-navbar-container ${isMenuOpen ? 'floating-navbar-container-open' : ''}`}
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          role="button"
-          tabIndex={0}
-          onKeyDown={(e) => e.key === 'Enter' && setIsMenuOpen(!isMenuOpen)}
-          aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-        >
-          <div className={`hamburger-icon ${isMenuOpen ? 'hamburger-icon-open' : ''}`}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </div>
-          <div
-            className={`floating-nav-menu ${isMenuOpen ? 'floating-nav-menu-open' : ''}`}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="floating-nav-link" onClick={() => handleNavClick('hero')}>
-              HOME
-            </span>
-            <span className="floating-nav-link" onClick={() => handleNavClick('projects')}>
-              PROJECTS
-            </span>
-            <span className="floating-nav-link" onClick={() => handleNavClick('about')}>
-              ABOUT ME
-            </span>
-            <span className="floating-nav-link" onClick={() => handleNavClick('services')}>
-              SERVICES & CAPABILITIES
-            </span>
-            <span className="floating-nav-link" onClick={() => handleNavClick('footer')}>
-              CONTACT
-            </span>
-          </div>
-        </div>
-      </nav>
-
-      <div className={`transition-curtain ${showTransition ? 'active' : ''}`}>
-        <span className="navitaion-text title">Home</span>
+    <div className="fixed top-6 left-0 right-0 z-[100] flex justify-center pointer-events-none">
+      <div className="pointer-events-auto">
+        <Dock 
+          items={items}
+          panelHeight={68}
+          baseItemSize={50}
+          magnification={70}
+        />
       </div>
-    </>
+    </div>
   );
 }
