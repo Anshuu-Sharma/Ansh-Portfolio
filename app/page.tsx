@@ -1,4 +1,3 @@
-import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 // import ProjectShowcase from '@/components/ProjectShowcase';
 // import CircularGallery from '@/components/CircularGallery';
@@ -11,7 +10,6 @@ export default function Home() {
   return (
     <main className="relative">
       <div className="relative z-10">
-        <Navbar />
         <Hero />
         {/* <ProjectShowcase /> */}
         {/* <section className="circular-gallery-section" aria-label="Circular gallery">

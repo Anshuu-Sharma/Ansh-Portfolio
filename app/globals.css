@@ -2106,7 +2106,7 @@ body {
 /* Footer - reference: dark bg, separator, parentheses CTA, three columns */
 .footer {
     min-height: 100vh;
-    padding: 56px 0 0;
+    padding: 140px 0 0;
     background-color: #ffffff;
     background-image: none;
     position: relative;

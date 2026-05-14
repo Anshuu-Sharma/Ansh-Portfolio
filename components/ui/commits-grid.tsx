@@ -82,7 +82,7 @@ const letterPatterns: { [key: string]: number[] } = {
 
 const commitColors = ["#48d55d", "#016d32", "#0d4429"];
 
-export const CommitsGrid = ({ text }: { text: string }) => {
+export const CommitsGrid = ({ text, fastMode = false }: { text: string, fastMode?: boolean }) => {
   const [mounted, setMounted] = React.useState(false);
   
   React.useEffect(() => {
@@ -137,14 +137,15 @@ export const CommitsGrid = ({ text }: { text: string }) => {
       const isHighlighted = highlightedCells.includes(index);
       const shouldFlash = !isHighlighted && Math.random() < 0.15; // Reduced flash frequency
       
+      const maxDelay = fastMode ? 0.1 : 0.6;
       return {
         isHighlighted,
         shouldFlash,
-        delay: `${(Math.random() * 0.6).toFixed(1)}s`,
+        delay: `${(Math.random() * maxDelay).toFixed(2)}s`,
         color: commitColors[Math.floor(Math.random() * commitColors.length)]
       };
     });
-  }, [gridWidth, gridHeight, highlightedCells]);
+  }, [gridWidth, gridHeight, highlightedCells, fastMode]);
 
   return (
     <section
@@ -165,6 +166,7 @@ export const CommitsGrid = ({ text }: { text: string }) => {
           )}
           style={mounted ? {
             animationDelay: cell.delay,
+            animationDuration: fastMode ? '0.2s' : '0.6s',
             "--highlight": cell.color,
           } as CSSProperties : {}}
         />

@@ -89,7 +89,7 @@ export default function Footer() {
       </div>
 
       {/* Dynamic Commits Grid instead of marquee */}
-      <div className="flex justify-center items-center pt-10 pb-8 px-4 w-full">
+      <div className="flex justify-center items-center pt-10 pb-4 px-4 w-full mt-auto">
         <CommitsGrid text="ANSH SHARMA" />
       </div>
     </footer>

@@ -3,6 +3,8 @@ import { Manrope, DM_Mono, Yatra_One, Orbitron, Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import LoadingGate from "@/components/LoadingGate";
+import StyledComponentsRegistry from "@/lib/styled-components-registry";
+import Navbar from "@/components/Navbar";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -51,11 +53,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${manrope.variable} ${dmMono.variable} ${yatraOne.variable} ${orbitron.variable} ${inter.variable}`}>
-        <LoadingGate>
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
-        </LoadingGate>
+        <StyledComponentsRegistry>
+          <LoadingGate>
+            <SmoothScroll>
+              <Navbar />
+              {children}
+            </SmoothScroll>
+          </LoadingGate>
+        </StyledComponentsRegistry>
       </body>
     </html>
   );
