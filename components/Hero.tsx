@@ -64,7 +64,7 @@ export default function Hero() {
       };
     }
 
-    const timeoutId = setTimeout(mount, 1200);
+    const timeoutId = setTimeout(mount, 100);
     return () => {
       cancelled = true;
       clearTimeout(timeoutId);

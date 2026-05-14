@@ -1,4 +1,4 @@
-"use client" 
+"use client"
 
 import * as React from "react"
 import { cn } from "@/lib/utils";
@@ -84,7 +84,7 @@ const commitColors = ["#48d55d", "#016d32", "#0d4429"];
 
 export const CommitsGrid = ({ text, fastMode = false }: { text: string, fastMode?: boolean }) => {
   const [mounted, setMounted] = React.useState(false);
-  
+
   React.useEffect(() => {
     setMounted(true);
   }, []);
@@ -107,7 +107,7 @@ export const CommitsGrid = ({ text, fastMode = false }: { text: string, fastMode
     const cleanedText = cleanString(text);
     const width = Math.max(cleanedText.length * 6, 6) + 1;
 
-    let currentPosition = 1; 
+    let currentPosition = 1;
     const highlightedCells: number[] = [];
 
     cleanedText
@@ -127,7 +127,7 @@ export const CommitsGrid = ({ text, fastMode = false }: { text: string, fastMode
     return {
       cells: highlightedCells,
       width,
-      height: 9, 
+      height: 9,
     };
   }, [text]);
 
@@ -136,7 +136,7 @@ export const CommitsGrid = ({ text, fastMode = false }: { text: string, fastMode
     return Array.from({ length: gridWidth * gridHeight }).map((_, index) => {
       const isHighlighted = highlightedCells.includes(index);
       const shouldFlash = !isHighlighted && Math.random() < 0.15; // Reduced flash frequency
-      
+
       const maxDelay = fastMode ? 0.1 : 0.6;
       return {
         isHighlighted,
