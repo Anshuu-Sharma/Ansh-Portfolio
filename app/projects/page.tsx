@@ -13,11 +13,7 @@ const dummyProjects = [
   { title: "SYNTH WAVE", description: "Audio visualization and generative music synthesizer app" }
 ];
 
-const categories = ["All", "Web3", "AI & Data", "E-Commerce", "Design Systems"];
-
 export default function ProjectsPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
-
   return (
     <main className="relative min-h-screen bg-[#fafaf9] text-black pt-36 pb-32 px-4 overflow-hidden font-inter">
       {/* Premium Background Elements */}
@@ -52,27 +48,6 @@ export default function ProjectsPage() {
           </p>
         </motion.div>
 
-        {/* Category Pills (Interactive UI) */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap justify-center gap-3 mb-20"
-        >
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveCategory(cat)}
-              className={`px-6 py-2.5 rounded-full font-dm-mono text-sm tracking-wider transition-all duration-300 border ${
-                activeCategory === cat 
-                  ? 'bg-black text-white border-black shadow-[0_8px_16px_rgba(0,0,0,0.12)] transform -translate-y-0.5' 
-                  : 'bg-white text-neutral-500 border-neutral-200 shadow-sm hover:border-[#00894d] hover:text-[#00894d] hover:shadow-md hover:-translate-y-0.5'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
-        </motion.div>
 
         {/* Staggered Project Cards */}
         <motion.div 
