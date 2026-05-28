@@ -71,10 +71,12 @@ export default function ProjectsPage() {
                 }}
               >
                 <ProjectCard 
+                  id={project.id}
                   title={project.title} 
                   description={project.subtitle} 
                   category={project.category}
                   techStack={project.techStack}
+                  color={project.color}
                   onClick={() => setSelectedProject(project)}
                 />
               </motion.div>

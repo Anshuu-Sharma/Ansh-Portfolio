@@ -50,7 +50,7 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
             transition={{ duration: 0.3 }}
             onClick={onClose}
             data-lenis-prevent="true"
-            className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-xl"
+            className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm"
           />
 
           {/* Modal Container Wrapper for Centering */}
@@ -60,41 +60,52 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="w-full max-w-4xl max-h-full bg-[#0a0a0a]/95 border border-white/10 rounded-3xl overflow-hidden flex flex-col pointer-events-auto"
-              style={{ 
-                boxShadow: `0 20px 80px -20px ${project.color}30, 0 0 0 1px ${project.color}20 inset`
-              }}
+              className="w-full max-w-4xl max-h-full bg-[#f5f5f0] border-[5px] border-[#0a0a0a] shadow-[12px_12px_0_#0a0a0a] overflow-hidden flex flex-col pointer-events-auto"
             >
-            {/* Header */}
-            <div className="relative p-6 md:p-8 pb-4 flex justify-between items-start border-b border-white/5 shrink-0">
-              <div>
-                <span 
-                  className="font-dm-mono text-xs uppercase tracking-[0.2em] mb-3 block"
-                  style={{ color: project.color }}
+            
+            {/* Brutalist Header Banner */}
+            <div 
+                className="relative p-6 md:p-8 flex justify-between items-start shrink-0 border-b-[5px] border-[#0a0a0a] overflow-hidden"
+                style={{ backgroundColor: project.color }}
+            >
+                {/* Background ID Watermark */}
+                <div 
+                    className="absolute right-[-10px] bottom-[-20px] text-[10rem] leading-[0.8] font-bebas-neue opacity-20 pointer-events-none text-black tracking-tighter"
+                    style={{ fontFamily: 'var(--font-bebas-neue)' }}
                 >
-                  {project.category}
-                </span>
-                <h2 className="font-orbitron text-3xl md:text-5xl font-bold text-white mb-2 leading-tight">
-                  {project.title}
-                </h2>
-                <p className="text-white/60 font-inter text-sm md:text-base max-w-2xl">
-                  {project.subtitle}
-                </p>
-              </div>
-              <button 
-                onClick={onClose}
-                className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center transition-colors shrink-0 text-white/70 hover:text-white"
-              >
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M1 1L13 13M1 13L13 1L1 13Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </button>
+                    {project.id.padStart(2, '0')}
+                </div>
+
+                <div className="relative z-10 flex-1 pr-6">
+                    <span 
+                        className="inline-block bg-[#00e060] border-[3px] border-[#0a0a0a] shadow-[3px_3px_0_#0a0a0a] text-[#000] font-extrabold text-[0.65rem] tracking-[0.15em] px-2 py-1 uppercase mb-4"
+                    >
+                    ● {project.category}
+                    </span>
+                    <h2 
+                        className="text-4xl md:text-6xl text-[#0a0a0a] leading-[0.9] tracking-[-0.01em] mb-2"
+                        style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                    >
+                    {project.title.toUpperCase()}
+                    </h2>
+                    <p className="text-[#0a0a0a] font-dm-mono font-bold text-sm md:text-base max-w-2xl bg-white/50 inline-block px-2 py-1 border-2 border-black mt-2">
+                        {project.subtitle}
+                    </p>
+                </div>
+                
+                <button 
+                    onClick={onClose}
+                    className="relative z-10 w-12 h-12 bg-[#0a0a0a] hover:bg-[#e8180a] flex items-center justify-center transition-colors shrink-0 text-[#f5e642] hover:text-white border-2 border-[#0a0a0a] shadow-[4px_4px_0_#000]"
+                >
+                    <svg width="20" height="20" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L13 13M1 13L13 1L1 13Z" stroke="currentColor" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter"/>
+                    </svg>
+                </button>
             </div>
 
             {/* Scrollable Content */}
             <div 
-              className="overflow-y-auto p-6 md:p-8 pt-6 flex-1 min-h-0 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-white/10 [&::-webkit-scrollbar-thumb]:rounded-full hover:[&::-webkit-scrollbar-thumb]:bg-white/20" 
-              style={{ scrollbarWidth: 'thin', scrollbarColor: 'rgba(255,255,255,0.1) transparent' }}
+              className="overflow-y-auto p-6 md:p-8 pt-6 flex-1 min-h-0 [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-[#f5f5f0] [&::-webkit-scrollbar-thumb]:bg-[#0a0a0a] [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-[#f5f5f0]" 
               data-lenis-prevent="true"
             >
               <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
@@ -102,34 +113,24 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                 <div className="space-y-10">
                   {/* Description */}
                   <section>
-                    <p className="text-white/80 font-inter leading-relaxed whitespace-pre-wrap">
+                    <p className="text-[#0a0a0a] font-inter font-medium leading-relaxed whitespace-pre-wrap text-[0.95rem] border-l-[5px] border-[#e8180a] pl-4">
                       {project.description}
                     </p>
                   </section>
 
-                  {/* Tech Stack */}
-                  <section>
-                    <h3 className="font-dm-mono text-xs uppercase tracking-[0.15em] text-white/40 mb-4">Tech Stack</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {project.techStack.map((tech, idx) => (
-                        <span 
-                          key={idx}
-                          className="px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-white/90 text-xs font-dm-mono"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </section>
-
                   {/* Impact / Resume Bullets */}
                   <section>
-                    <h3 className="font-dm-mono text-xs uppercase tracking-[0.15em] text-white/40 mb-4">Impact & Implementation</h3>
-                    <ul className="space-y-4">
+                    <h3 
+                        className="text-2xl text-[#0a0a0a] mb-5 tracking-wide"
+                        style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                    >
+                        IMPACT & IMPLEMENTATION
+                    </h3>
+                    <ul className="space-y-5">
                       {project.bulletPoints.map((bullet, idx) => (
-                        <li key={idx} className="flex items-start gap-3 text-white/80 font-inter leading-relaxed text-sm">
-                          <span className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: project.color }} />
-                          <span dangerouslySetInnerHTML={{ __html: bullet.replace(/\*\*(.*?)\*\*/g, '<strong class="text-white">$1</strong>') }} />
+                        <li key={idx} className="flex items-start gap-4 text-[#0a0a0a] font-inter leading-relaxed text-[0.9rem] font-medium">
+                          <span className="mt-1 w-3 h-3 bg-[#0a0a0a] shrink-0 border-2 border-[#f5e642]" />
+                          <span dangerouslySetInnerHTML={{ __html: bullet.replace(/\*\*(.*?)\*\*/g, '<strong class="font-extrabold bg-[#f5e642]/50 px-1">$1</strong>') }} />
                         </li>
                       ))}
                     </ul>
@@ -138,13 +139,38 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
 
                 {/* Right Column */}
                 <div className="space-y-8">
+                  {/* Tech Stack */}
+                  <section className="bg-white border-[3px] border-[#0a0a0a] p-5 shadow-[4px_4px_0_#0a0a0a]">
+                    <h3 
+                        className="text-xl text-[#0a0a0a] mb-4 tracking-wide"
+                        style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                    >
+                        TECH STACK
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {project.techStack.map((tech, idx) => (
+                        <span 
+                          key={idx}
+                          className="px-2 py-1 bg-[#f5f5f0] border-[2px] border-[#0a0a0a] text-[#0a0a0a] text-[0.65rem] font-bold font-dm-mono uppercase tracking-widest shadow-[2px_2px_0_#0a0a0a]"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  </section>
+
                   {/* Tech Concepts */}
-                  <section className="bg-white/[0.02] rounded-2xl p-6 border border-white/5">
-                    <h3 className="font-dm-mono text-xs uppercase tracking-[0.15em] text-white/40 mb-5">Architecture & Concepts</h3>
-                    <ul className="space-y-4 relative before:absolute before:inset-y-2 before:left-1.5 before:w-px before:bg-white/10">
+                  <section className="bg-[#0a0a0a] p-5 border-[3px] border-[#0a0a0a] shadow-[4px_4px_0_#00e060]">
+                    <h3 
+                        className="text-xl text-[#00e060] mb-4 tracking-wide"
+                        style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                    >
+                        ARCHITECTURE & CONCEPTS
+                    </h3>
+                    <ul className="space-y-3">
                       {project.techConcepts.map((concept, idx) => (
-                        <li key={idx} className="relative pl-6 text-sm text-white/70 font-inter">
-                          <span className="absolute left-[3px] top-2 w-1.5 h-1.5 rounded-full -translate-x-1/2" style={{ backgroundColor: project.color }} />
+                        <li key={idx} className="flex items-start gap-3 text-sm text-[#f5f5f0] font-dm-mono font-medium">
+                          <span className="text-[#00e060] font-bold">›</span>
                           {concept}
                         </li>
                       ))}
@@ -158,9 +184,10 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
                         href={project.liveUrl} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="w-full flex items-center justify-center gap-2 py-4 rounded-xl font-dm-mono text-sm tracking-widest text-black bg-white hover:bg-white/90 transition-colors"
+                        className="w-full flex items-center justify-center gap-2 py-4 border-[4px] border-[#0a0a0a] font-bebas-neue text-2xl tracking-[0.1em] text-[#f5e642] bg-[#0a0a0a] hover:bg-[#f5e642] hover:text-[#0a0a0a] transition-colors shadow-[6px_6px_0_#00e060]"
+                        style={{ fontFamily: 'var(--font-bebas-neue)' }}
                       >
-                        VIEW LIVE ↗
+                        + VIEW LIVE DEPLOYMENT
                       </a>
                     </section>
                   )}

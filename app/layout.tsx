@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Manrope, DM_Mono, Yatra_One, Orbitron, Inter } from "next/font/google";
+import { Manrope, DM_Mono, Yatra_One, Orbitron, Inter, Bebas_Neue } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
 import LoadingGate from "@/components/LoadingGate";
@@ -40,6 +40,13 @@ const inter = Inter({
   display: "swap",
 });
 
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas-neue",
+  subsets: ["latin"],
+  weight: ["400"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Portfolio - Creative Web Developer",
   description: "Explore the portfolio of a creative web developer specializing in crafting immersive, high-performance digital experiences with modern technologies.",
@@ -52,7 +59,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${manrope.variable} ${dmMono.variable} ${yatraOne.variable} ${orbitron.variable} ${inter.variable}`}>
+      <body className={`${manrope.variable} ${dmMono.variable} ${yatraOne.variable} ${orbitron.variable} ${inter.variable} ${bebasNeue.variable}`}>
         <StyledComponentsRegistry>
           <LoadingGate>
             <SmoothScroll>
