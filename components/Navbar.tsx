@@ -1,6 +1,7 @@
 'use client';
 
-import { VscHome, VscLayers, VscAccount, VscBriefcase, VscMail } from 'react-icons/vsc';
+import { VscHome, VscLayers, VscAccount, VscTerminal } from 'react-icons/vsc';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 import Dock from './ui/Dock';
 import { CurtainTransition } from './ui/curtain-transition';
 import { useState, useEffect } from 'react';
@@ -49,8 +50,9 @@ export default function Navbar() {
     { icon: <VscHome size={20} className="text-neutral-700" />, label: 'Home', onClick: () => handleNavClick('hero', '/') },
     { icon: <VscLayers size={20} className="text-neutral-700" />, label: 'Projects', onClick: () => handleNavClick('projects', '/projects') },
     { icon: <VscAccount size={20} className="text-neutral-700" />, label: 'About', onClick: () => handleNavClick('about', '/about') },
-    { icon: <VscBriefcase size={20} className="text-neutral-700" />, label: 'Services', onClick: () => handleNavClick('services') },
-    { icon: <VscMail size={20} className="text-neutral-700" />, label: 'Contact', onClick: () => handleNavClick('footer') },
+    { icon: <VscTerminal size={20} className="text-neutral-700" />, label: 'Playground', onClick: () => handleNavClick('playground', '/playground') },
+    { icon: <FaGithub size={20} className="text-neutral-700" />, label: 'GitHub', onClick: () => window.open('https://github.com/Anshuu-Sharma', '_blank') },
+    { icon: <FaLinkedin size={20} className="text-neutral-700" />, label: 'LinkedIn', onClick: () => window.open('https://linkedin.com/in/ansh-sharma-36a936143', '_blank') },
   ];
 
   return (

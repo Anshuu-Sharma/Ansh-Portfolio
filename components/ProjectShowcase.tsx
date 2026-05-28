@@ -65,7 +65,7 @@ export default function ProjectShowcase() {
             <div className="meta">
               <p className="meta-title">{project.category.toUpperCase()}</p>
               <div className="divider" />
-              <p className="meta-tech">{project.techStack}</p>
+              <p className="meta-tech">{project.techStack.join(' • ')}</p>
               <div className="divider" />
             </div>
 

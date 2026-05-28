@@ -12,6 +12,8 @@ const config: Config = {
         manrope: ['var(--font-manrope)', 'sans-serif'],
         'dm-mono': ['var(--font-dm-mono)', 'monospace'],
         'yatra-one': ['var(--font-yatra-one)', 'sans-serif'],
+        orbitron: ['var(--font-orbitron)', 'sans-serif'],
+        inter: ['var(--font-inter)', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",

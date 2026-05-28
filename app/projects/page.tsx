@@ -3,19 +3,20 @@
 import React, { useState } from 'react';
 import ProjectCard from '@/components/ui/ProjectCard';
 import { motion } from 'framer-motion';
-
-const dummyProjects = [
-  { title: "UIVERSE (3D UI)", description: "Create, share, and use beautiful custom elements made with CSS" },
-  { title: "NEURO SYNC", description: "Brain-computer interface dashboard with real-time analytics" },
-  { title: "QUANTUM LEAP", description: "A predictive model visualization tool built with WebGL" },
-  { title: "ECHO COMMERCE", description: "Next-gen headless e-commerce storefront for luxury brands" },
-  { title: "ORBITAL MAPS", description: "Interactive 3D planetary mapping and charting system" },
-  { title: "SYNTH WAVE", description: "Audio visualization and generative music synthesizer app" }
-];
+import { PROJECTS, PROJECT_IDS, Project } from '@/lib/projects';
+import ProjectDetailModal from '@/components/ui/ProjectDetailModal';
 
 export default function ProjectsPage() {
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
   return (
     <main className="relative min-h-screen bg-[#fafaf9] text-black pt-36 pb-32 px-4 overflow-hidden font-inter">
+      <ProjectDetailModal 
+        project={selectedProject} 
+        isOpen={selectedProject !== null} 
+        onClose={() => setSelectedProject(null)} 
+      />
+      
       {/* Premium Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0">
         {/* Soft Ambient Orbs */}
@@ -59,17 +60,26 @@ export default function ProjectsPage() {
           }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-16 gap-x-8 place-items-center"
         >
-          {dummyProjects.map((project, idx) => (
-            <motion.div
-              key={idx}
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
-              }}
-            >
-              <ProjectCard title={project.title} description={project.description} />
-            </motion.div>
-          ))}
+          {PROJECT_IDS.map((id) => {
+            const project = PROJECTS[id];
+            return (
+              <motion.div
+                key={id}
+                variants={{
+                  hidden: { opacity: 0, y: 40 },
+                  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                }}
+              >
+                <ProjectCard 
+                  title={project.title} 
+                  description={project.subtitle} 
+                  category={project.category}
+                  techStack={project.techStack}
+                  onClick={() => setSelectedProject(project)}
+                />
+              </motion.div>
+            );
+          })}
         </motion.div>
       </div>
     </main>
