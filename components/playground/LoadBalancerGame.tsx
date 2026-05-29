@@ -186,37 +186,38 @@ export default function LoadBalancerGame() {
   return (
     <div className="flex flex-col h-full w-full">
       {/* Controls */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-neutral-950 p-4 rounded-xl border border-neutral-800 mb-6 gap-4 z-10 relative">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center bg-white p-5 border-[4px] border-[#0a0a0a] shadow-[8px_8px_0_#0a0a0a] mb-8 gap-4 z-10 relative">
         <div>
-          <h2 className="text-xl font-orbitron font-bold text-white">Load Balancer</h2>
-          <p className="text-xs text-neutral-400 font-dm-mono mt-1">Keep the servers from crashing.</p>
-          <p className="text-[10px] text-[#00c37b]/80 font-dm-mono mt-1 uppercase tracking-wide">Click servers to toggle ON/OFF.</p>
+          <h2 className="text-4xl text-[#0a0a0a] leading-none" style={{ fontFamily: 'var(--font-bebas-neue)' }}>Load Balancer</h2>
+          <p className="text-[13px] text-[#0a0a0a] font-dm-mono font-bold mt-1 uppercase tracking-widest">Keep the servers from crashing.</p>
+          <p className="text-[11px] text-[#00e060] font-dm-mono font-bold mt-1 uppercase tracking-widest bg-[#0a0a0a] inline-block px-2 py-0.5 border-2 border-[#0a0a0a]">Click servers to toggle ON/OFF.</p>
         </div>
         
-        <div className="flex flex-col items-end gap-3 w-full md:w-auto">
+        <div className="flex flex-col items-end gap-4 w-full md:w-auto">
           <div className="flex items-center gap-4 flex-wrap justify-end">
-            <div className="flex items-center gap-2">
-                <span className="text-xs font-dm-mono text-neutral-500">Auto-Scale:</span>
+            <div className="flex items-center gap-2 border-[3px] border-[#0a0a0a] px-3 py-1.5 bg-[#f5f5f0] shadow-[4px_4px_0_#0a0a0a]">
+                <span className="text-[12px] font-bold font-dm-mono uppercase tracking-widest text-[#0a0a0a]">Auto-Scale:</span>
                 <button 
                   onClick={() => setAutoScale(!autoScale)}
-                  className={`w-10 h-5 rounded-full relative transition-colors ${autoScale ? 'bg-[#00c37b]' : 'bg-neutral-800'}`}
+                  className={`w-12 h-6 relative transition-colors border-2 border-[#0a0a0a] ${autoScale ? 'bg-[#00e060]' : 'bg-white'}`}
                 >
-                    <div className={`absolute top-0.5 left-0.5 w-4 h-4 bg-white rounded-full transition-transform ${autoScale ? 'translate-x-5' : 'translate-x-0'}`} />
+                    <div className={`absolute top-0.5 left-0.5 w-4 h-4 bg-[#0a0a0a] transition-transform ${autoScale ? 'translate-x-6' : 'translate-x-0'}`} />
                 </button>
             </div>
             
-            <div className="w-px h-6 bg-neutral-800 hidden md:block" />
+            <div className="w-1 h-8 bg-[#0a0a0a] hidden md:block" />
 
-            <div className="flex bg-neutral-900 rounded-lg p-1 border border-neutral-800">
+            <div className="flex bg-white border-[3px] border-[#0a0a0a] shadow-[4px_4px_0_#0a0a0a]">
               <button 
                 onClick={() => setAlgorithm('round-robin')}
-                className={`px-3 py-1.5 text-xs font-dm-mono rounded-md transition-colors ${algorithm === 'round-robin' ? 'bg-[#00c37b]/20 text-[#00c37b]' : 'text-neutral-500 hover:text-neutral-300'}`}
+                className={`px-4 py-2 text-[12px] font-bold font-dm-mono uppercase tracking-widest transition-colors ${algorithm === 'round-robin' ? 'bg-[#0a0a0a] text-white' : 'text-[#0a0a0a] hover:bg-[#f5f5f0]'}`}
               >
                 Round Robin
               </button>
+              <div className="w-[3px] bg-[#0a0a0a]" />
               <button 
                 onClick={() => setAlgorithm('least-connections')}
-                className={`px-3 py-1.5 text-xs font-dm-mono rounded-md transition-colors ${algorithm === 'least-connections' ? 'bg-[#00c37b]/20 text-[#00c37b]' : 'text-neutral-500 hover:text-neutral-300'}`}
+                className={`px-4 py-2 text-[12px] font-bold font-dm-mono uppercase tracking-widest transition-colors ${algorithm === 'least-connections' ? 'bg-[#0a0a0a] text-white' : 'text-[#0a0a0a] hover:bg-[#f5f5f0]'}`}
               >
                 Least Conn
               </button>
@@ -231,10 +232,10 @@ export default function LoadBalancerGame() {
                   }
                   setIsRunning(!isRunning);
               }}
-              className={`px-6 py-2 rounded-lg font-bold text-sm tracking-wider transition-all shadow-lg min-w-[160px] ${
+              className={`px-6 py-2.5 border-[3px] border-[#0a0a0a] font-bold font-dm-mono uppercase tracking-widest text-[13px] transition-all min-w-[160px] ${
                 isRunning 
-                  ? 'bg-red-500/10 text-red-400 border border-red-500/30 hover:bg-red-500/20' 
-                  : 'bg-[#00c37b] text-neutral-950 border border-[#00c37b] hover:bg-[#00e87a] shadow-[#00c37b]/20'
+                  ? 'bg-red-500 text-white shadow-[4px_4px_0_#0a0a0a] hover:translate-y-1 hover:translate-x-1 hover:shadow-none' 
+                  : 'bg-[#00e060] text-[#0a0a0a] shadow-[6px_6px_0_#0a0a0a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[10px_10px_0_#0a0a0a]'
               }`}
             >
               {isRunning ? 'STOP TRAFFIC' : 'START TRAFFIC'}
@@ -244,12 +245,12 @@ export default function LoadBalancerGame() {
           <button
             onClick={triggerSpike}
             disabled={!isRunning || isSpiking}
-            className={`px-4 py-1.5 rounded text-xs font-bold tracking-wider transition-all border ${
+            className={`px-6 py-2 border-[3px] border-[#0a0a0a] text-[12px] font-bold font-dm-mono uppercase tracking-widest transition-all ${
                 isSpiking
-                    ? 'bg-orange-500/20 text-orange-400 border-orange-500/50 animate-pulse'
+                    ? 'bg-orange-500 text-white shadow-[4px_4px_0_#0a0a0a] animate-pulse'
                     : !isRunning
-                        ? 'bg-neutral-900 text-neutral-600 border-neutral-800 cursor-not-allowed'
-                        : 'bg-neutral-900 text-orange-500 border-orange-500/30 hover:bg-orange-500/10 hover:border-orange-500'
+                        ? 'bg-[#e5e5e5] text-neutral-400 cursor-not-allowed'
+                        : 'bg-white text-[#0a0a0a] shadow-[4px_4px_0_#0a0a0a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0_#0a0a0a] hover:bg-[#f5e642]'
             }`}
           >
             {isSpiking ? '⚠️ INCOMING SPIKE ⚠️' : 'SIMULATE SPIKE (5s)'}
@@ -258,26 +259,31 @@ export default function LoadBalancerGame() {
       </div>
 
       {/* Arena */}
-      <div className="flex-grow relative bg-neutral-950/50 rounded-xl border border-neutral-800/50 overflow-hidden flex items-center justify-center p-4 min-h-[700px]">
+      <div className="flex-grow relative bg-[#f5f5f0] border-[4px] border-[#0a0a0a] shadow-[inset_8px_8px_0_rgba(0,0,0,0.05)] overflow-hidden flex items-center justify-center p-4 min-h-[700px]">
         {/* Square container to keep the circle perfect */}
         <div className="relative w-full max-w-[700px] aspect-square">
             
             {/* Center Load Balancer (ELB) */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-neutral-800 border border-[#00c37b]/40 w-28 h-28 rounded-full z-30 shadow-[0_0_30px_rgba(0,195,123,0.15)] flex items-center justify-center flex-col">
-                <div className="w-10 h-10 rounded-full border-[3px] border-[#00c37b] border-t-transparent animate-spin mb-2" style={{ animationDuration: '3s' }} />
-                <span className="text-white font-orbitron font-bold tracking-widest text-xs">ELB</span>
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#0a0a0a] border-[5px] border-[#0a0a0a] w-32 h-32 z-30 shadow-[8px_8px_0_#00e060] flex items-center justify-center flex-col">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-2">
+                    <path d="M4 12H9L13 5H20M9 12L13 19H20" stroke="#00e060" strokeWidth="2.5" strokeLinecap="square" strokeLinejoin="miter"/>
+                    <rect x="2" y="10" width="4" height="4" fill="#00e060"/>
+                    <rect x="18" y="3" width="4" height="4" fill="#00e060"/>
+                    <rect x="18" y="17" width="4" height="4" fill="#00e060"/>
+                </svg>
+                <span className="text-[#00e060] font-bold font-dm-mono tracking-widest text-[14px]">ELB</span>
             </div>
 
-            {/* Connecting Lines (optional, for visual polish) */}
-            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10 opacity-20">
+            {/* Connecting Lines */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none z-10">
                 {nodes.map(n => (
                     <line 
                         key={`line-${n.id}`}
                         x1="50%" y1="50%" 
                         x2={`${n.xPct}%`} y2={`${n.yPct}%`} 
-                        stroke={n.status === 'down' ? '#555' : n.status === 'overloaded' ? '#ef4444' : '#00c37b'} 
-                        strokeWidth="1" 
-                        strokeDasharray="4 4" 
+                        stroke={n.status === 'down' ? '#e5e5e5' : n.status === 'overloaded' ? '#0a0a0a' : '#0a0a0a'} 
+                        strokeWidth="3" 
+                        strokeDasharray={n.status === 'down' ? '5 5' : 'none'} 
                     />
                 ))}
             </svg>
@@ -296,7 +302,7 @@ export default function LoadBalancerGame() {
                                 animate={{ top: `${targetNode.yPct}%`, left: `${targetNode.xPct}%`, opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0 }}
                                 transition={{ duration: ANIMATION_DURATION_MS / 1000, ease: "linear" }}
-                                className="absolute w-4 h-4 bg-[#00c37b] rounded-full shadow-[0_0_12px_#00c37b]"
+                                className="absolute w-5 h-5 bg-[#00e060] border-[2px] border-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a]"
                             />
                         )
                     })}
@@ -305,7 +311,7 @@ export default function LoadBalancerGame() {
 
             {/* Nodes */}
             {nodes.map(node => {
-                const queuePct = (node.queue / MAX_QUEUE) * 100;
+                const queuePct = Math.min(100, (node.queue / MAX_QUEUE) * 100);
                 const isOver = node.status === 'overloaded';
                 const isDown = node.status === 'down';
                 
@@ -317,28 +323,28 @@ export default function LoadBalancerGame() {
                 >
                     <button
                         onClick={() => toggleNodeStatus(node.id)}
-                        className={`w-[140px] p-3 rounded-xl border transition-all duration-300 flex flex-col items-center ${
+                        className={`w-[140px] p-4 border-[4px] transition-all duration-200 flex flex-col items-center shadow-[6px_6px_0_#0a0a0a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[10px_10px_0_#0a0a0a] ${
                             isDown 
-                                ? 'bg-neutral-900 border-neutral-800 opacity-50 grayscale' 
+                                ? 'bg-[#e5e5e5] border-[#0a0a0a] opacity-80 grayscale' 
                                 : isOver
-                                    ? 'bg-red-950/80 border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]'
-                                    : 'bg-neutral-900 border-[#00c37b]/30 hover:border-[#00c37b]/60 shadow-[0_0_15px_rgba(0,195,123,0.1)]'
+                                    ? 'bg-red-500 border-[#0a0a0a]'
+                                    : 'bg-white border-[#0a0a0a]'
                         }`}
                     >
-                        <div className="flex items-center gap-2 mb-2">
-                            <div className={`w-2 h-2 rounded-full ${isDown ? 'bg-neutral-600' : isOver ? 'bg-red-500 animate-pulse' : 'bg-[#00c37b]'}`} />
-                            <span className="text-xs font-orbitron font-bold text-neutral-300">SRV-0{node.id + 1}</span>
+                        <div className="flex items-center gap-2 mb-3">
+                            <div className={`w-3 h-3 border-2 border-[#0a0a0a] ${isDown ? 'bg-neutral-600' : isOver ? 'bg-red-900 animate-pulse' : 'bg-[#00e060]'}`} />
+                            <span className={`text-[15px] font-bold font-dm-mono ${isOver ? 'text-white' : 'text-[#0a0a0a]'}`}>SRV-0{node.id + 1}</span>
                         </div>
                         
                         {/* Compact Queue Bar */}
-                        <div className="w-full h-3 bg-neutral-950 rounded-full overflow-hidden border border-neutral-800 mb-2 relative">
+                        <div className={`w-full h-4 border-[2px] border-[#0a0a0a] mb-2 relative ${isOver ? 'bg-red-950' : 'bg-[#e5e5e5]'}`}>
                             <div 
-                                className={`h-full transition-all duration-300 ${isDown ? 'bg-neutral-700' : isOver ? 'bg-red-500' : 'bg-[#00c37b]'}`}
+                                className={`h-full border-r-[2px] border-[#0a0a0a] transition-all duration-300 ${isDown ? 'bg-neutral-500' : isOver ? 'bg-white' : 'bg-[#f5e642]'}`}
                                 style={{ width: `${queuePct}%` }}
                             />
                         </div>
 
-                        <span className="text-[10px] font-dm-mono text-neutral-500">
+                        <span className={`text-[11px] font-bold font-dm-mono uppercase tracking-widest ${isOver ? 'text-white' : 'text-[#0a0a0a]'}`}>
                             {isDown ? 'OFFLINE' : isOver ? 'CRASHED' : `QUEUE: ${node.queue}/${MAX_QUEUE}`}
                         </span>
                     </button>

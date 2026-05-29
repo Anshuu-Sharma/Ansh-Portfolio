@@ -29,13 +29,11 @@ export default function Footer() {
       <div className="container">
         {/* Remarkable line + Let's work together */}
         <div className="footer-cta-block">
-          <p className="footer-remarkable">Let&apos;s build and ship something remarkable. Open
-            to agency collaborations, freelance work, and
-            fully remote full-time opportunities.</p>
+          <p className="footer-remarkable">Let&apos;s build something that matters. I thrive on architecting scalable systems, diving into complex problems, and turning ambitious ideas into production-ready code.</p>
           <div className="work-together-wrap">
             <a
               className="work-together-pill"
-              href="mailto:anshingsharma07@gmail.com"
+              href="mailto:sharma.ansh2607@gmail.com"
               target="_blank"
               rel="noreferrer"
             >
@@ -53,8 +51,8 @@ export default function Footer() {
         {/* Three-column footer */}
         <div className="footer-columns">
           <div className="footer-col footer-col-left">
-            {/* <a className="footer-link" href="mailto:anshingsharma07@gmail.com">
-              hello.anshingsharma07@gmail.com
+            {/* <a className="footer-link" href="mailto:sharma.ansh2607@gmail.com">
+              sharma.ansh2607@gmail.com
             </a> */}
             <a className="footer-link" target="_blank" href="https://www.linkedin.com/in/ansh-sharma-36a936143/" rel="noreferrer">
               LinkedIn
@@ -62,16 +60,12 @@ export default function Footer() {
             <a className="footer-link" target="_blank" href="https://github.com/Anshuu-Sharma" rel="noreferrer">
               GitHub
             </a>
-            <a className="footer-link" target="_blank" href="https://leetcode.com/u/ansh7s/" rel="noreferrer">
-              LeetCode
-            </a>
           </div>
           <div className="footer-col footer-col-center">
             {/* <span className="footer-link footer-time">IST - {istTime}</span> */}
             <span className="footer-link footer-clickable" onClick={scrollToTop}>
               Back to top
             </span>
-            <span className="footer-credit">Designed by <a href="http://khatri.in" target="_blank" rel="noreferrer">KHATRI</a></span>
             {/* <div className="footer-link footer-show-grid">
               <span>Show grid</span>
               <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

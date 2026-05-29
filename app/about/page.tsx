@@ -51,7 +51,7 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 
 function SkillPill({ label }: { label: string }) {
   return (
-    <span className="px-3 py-1.5 text-[12px] font-manrope font-medium bg-neutral-100 border border-neutral-200 text-neutral-600 rounded-full hover:border-[#00c37b] hover:text-[#00894d] hover:bg-[#00c37b]/5 transition-all duration-200 cursor-default">
+    <span className="px-3 py-1.5 text-[11px] font-dm-mono font-bold uppercase tracking-wider bg-white border-2 border-[#0a0a0a] text-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a] hover:bg-[#00c37b] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[3px_3px_0_#0a0a0a] transition-all duration-150 cursor-default">
       {label}
     </span>
   );
@@ -269,30 +269,30 @@ export default function AboutPage() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-3 justify-center md:justify-start pt-2">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start pt-2">
               <a
                 href="mailto:sharma.ansh2607@gmail.com"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-neutral-900 text-white text-sm font-medium hover:bg-[#00c37b] shadow-lg shadow-neutral-900/10 hover:shadow-[#00c37b]/20 transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 border-[3px] border-[#0a0a0a] bg-[#0a0a0a] text-[#00e060] text-[13px] font-bold uppercase tracking-widest font-dm-mono shadow-[4px_4px_0_#00e060] hover:bg-[#00e060] hover:text-[#0a0a0a] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#0a0a0a] transition-all duration-200"
               >
-                <VscMail size={16} />
+                <VscMail size={18} />
                 Email Me
               </a>
               <a
                 href="https://linkedin.com/in/ansh-shrma"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-neutral-200 bg-white text-sm hover:border-[#00c37b] hover:text-[#00894d] shadow-sm transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 border-[3px] border-[#0a0a0a] bg-white text-[#0a0a0a] text-[13px] font-bold uppercase tracking-widest font-dm-mono shadow-[4px_4px_0_#0a0a0a] hover:bg-[#f5e642] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#0a0a0a] transition-all duration-200"
               >
-                <FaLinkedin size={16} />
+                <FaLinkedin size={18} />
                 LinkedIn
               </a>
               <a
                 href="https://github.com/Anshuu-Sharma"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-neutral-200 bg-white text-sm hover:border-[#00c37b] hover:text-[#00894d] shadow-sm transition-all duration-300"
+                className="flex items-center gap-2 px-6 py-3 border-[3px] border-[#0a0a0a] bg-white text-[#0a0a0a] text-[13px] font-bold uppercase tracking-widest font-dm-mono shadow-[4px_4px_0_#0a0a0a] hover:bg-[#f5e642] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0_#0a0a0a] transition-all duration-200"
               >
-                <VscGithubInverted size={16} />
+                <VscGithubInverted size={18} />
                 GitHub
               </a>
             </div>
@@ -316,48 +316,50 @@ export default function AboutPage() {
           </motion.div>
 
           {/* Timeline */}
-          <div className="relative pl-8 border-l-2 border-neutral-100 space-y-10">
+          <div className="relative pl-8 border-l-[4px] border-[#0a0a0a] space-y-10">
             {experience.map((role, i) => (
               <motion.div key={i} variants={fadeUp} className="relative group">
                 {/* Timeline dot */}
-                <div className={`absolute -left-[42px] top-5 w-4 h-4 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 ${role.isCurrent
-                  ? 'bg-[#00c37b] border-[#00c37b] shadow-[#00c37b]/30'
-                  : 'bg-white border-neutral-300 group-hover:border-[#00c37b]'
+                <div className={`absolute -left-[46px] top-5 w-6 h-6 border-[3px] border-[#0a0a0a] transition-all duration-300 group-hover:scale-110 ${role.isCurrent
+                  ? 'bg-[#00e060] shadow-[3px_3px_0_#0a0a0a]'
+                  : 'bg-white shadow-[2px_2px_0_#0a0a0a]'
                   }`}
                 />
 
                 {/* Card */}
-                <div className="bg-white border border-neutral-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:border-[#00c37b]/30 transition-all duration-300">
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                <div className="bg-[#f5f5f0] border-[4px] border-[#0a0a0a] p-6 shadow-[8px_8px_0_#0a0a0a] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[12px_12px_0_#0a0a0a] transition-all duration-200">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-5 border-b-[3px] border-[#0a0a0a] pb-4">
                     <div className="flex items-center gap-4">
                       {role.logo && (
-                        <div className="relative w-14 h-14 flex-shrink-0 rounded-2xl overflow-hidden border border-neutral-100 shadow-sm bg-white flex items-center justify-center p-1">
+                        <div className="relative w-16 h-16 flex-shrink-0 overflow-hidden border-[3px] border-[#0a0a0a] bg-white flex items-center justify-center p-1 shadow-[3px_3px_0_#0a0a0a]">
                           <Image src={role.logo} alt={role.company} fill className="object-contain p-2" />
                         </div>
                       )}
                       <div>
-                        <h3 className="text-[17px] font-bold text-neutral-900 leading-tight">
-                          {role.company}
+                        <h3 
+                            className="text-3xl md:text-4xl text-[#0a0a0a] leading-[0.9] tracking-[-0.01em]"
+                            style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                        >
+                          {role.company.toUpperCase()}
                         </h3>
-                        <p className="text-[14.5px] font-medium text-neutral-500 mt-0.5">{role.title}</p>
+                        <p className="text-[13px] font-bold font-dm-mono uppercase tracking-widest text-neutral-600 mt-1">{role.title}</p>
                       </div>
                     </div>
                     <div className="flex flex-wrap items-center gap-2 pt-1 sm:pt-0">
-                      <span className="px-3.5 py-1.5 bg-white border border-neutral-200 text-neutral-600 rounded-full text-[12px] whitespace-nowrap font-medium font-manrope">
+                      <span className="px-3.5 py-1 border-[2px] border-[#0a0a0a] bg-white text-[#0a0a0a] text-[11px] uppercase tracking-widest font-bold font-dm-mono shadow-[2px_2px_0_#0a0a0a]">
                         {role.period}
                       </span>
                       {role.isCurrent && (
-                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-white border border-[#00c37b]/30 text-[#00894d] rounded-full text-[12px] font-medium whitespace-nowrap shadow-sm">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#00c37b] animate-pulse" />
-                          Current
+                        <span className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-[#00e060] border-[2px] border-[#0a0a0a] text-[#0a0a0a] text-[11px] font-bold uppercase tracking-widest shadow-[2px_2px_0_#0a0a0a]">
+                          ● CURRENT
                         </span>
                       )}
                     </div>
                   </div>
-                  <ul className="space-y-2.5">
+                  <ul className="space-y-3">
                     {role.bullets.map((b, j) => (
-                      <li key={j} className="flex gap-2.5 text-[13.5px] text-neutral-600 leading-relaxed">
-                        <span className="text-[#00c37b] mt-0.5 shrink-0">▹</span>
+                      <li key={j} className="flex gap-3 text-[14px] font-medium text-[#0a0a0a] leading-relaxed items-start">
+                        <span className="w-2.5 h-2.5 mt-1.5 shrink-0 bg-[#0a0a0a] border border-[#f5e642]" />
                         {b}
                       </li>
                     ))}
@@ -389,13 +391,18 @@ export default function AboutPage() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="bg-white border border-neutral-100 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-[#00c37b]/30 transition-all duration-300"
+                className="bg-[#0a0a0a] border-[4px] border-[#0a0a0a] p-5 shadow-[6px_6px_0_#00e060] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#00e060] transition-all duration-200"
               >
-                <div className="flex items-center gap-2.5 mb-4">
-                  {cat.icon}
-                  <h3 className="font-semibold text-sm text-neutral-800">{cat.label}</h3>
+                <div className="flex items-center gap-2.5 mb-4 border-b-2 border-white/20 pb-3">
+                  <div className="text-[#00e060]">{cat.icon}</div>
+                  <h3 
+                      className="text-2xl text-white tracking-widest"
+                      style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                  >
+                      {cat.label.toUpperCase()}
+                  </h3>
                 </div>
-                <div className="flex flex-wrap gap-1.5">
+                <div className="flex flex-wrap gap-2">
                   {cat.items.map((s) => <SkillPill key={s} label={s} />)}
                 </div>
               </motion.div>
@@ -424,19 +431,23 @@ export default function AboutPage() {
               <motion.div
                 key={i}
                 variants={fadeUp}
-                className="group relative bg-white border border-neutral-100 rounded-2xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 hover:border-[#00c37b]/30 transition-all duration-300 overflow-hidden"
+                className="group relative bg-white border-[4px] border-[#0a0a0a] p-5 shadow-[6px_6px_0_#0a0a0a] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#0a0a0a] hover:bg-[#f5e642] transition-all duration-200"
               >
-                {/* Subtle hover gradient */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[#00c37b]/4 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-
-                <div className="relative flex items-start gap-3">
-                  <div className="mt-0.5 shrink-0">{ach.icon}</div>
+                <div className="relative flex items-start gap-4">
+                  <div className="mt-1 shrink-0 p-2 bg-[#0a0a0a] border-2 border-[#0a0a0a] group-hover:bg-white transition-colors">
+                    <div className="text-white group-hover:text-[#0a0a0a]">{ach.icon}</div>
+                  </div>
                   <div className="min-w-0">
-                    <div className="text-[10px] font-dm-mono tracking-widest text-neutral-400 uppercase mb-1">{ach.year}</div>
-                    <div className="font-bold text-neutral-900 text-sm mb-0.5">{ach.rank}</div>
-                    <div className="text-neutral-700 text-[13px] font-medium leading-snug mb-1">{ach.event}</div>
-                    <div className="text-[11px] text-neutral-400 font-dm-mono mb-1.5">{ach.detail}</div>
-                    <div className="text-[12px] text-neutral-500 leading-relaxed">{ach.project}</div>
+                    <div className="text-[11px] font-dm-mono font-bold tracking-widest text-[#0a0a0a] uppercase mb-1 bg-black/10 inline-block px-1.5 py-0.5 border border-[#0a0a0a]">{ach.year}</div>
+                    <div 
+                        className="text-3xl text-[#0a0a0a] leading-none mb-2"
+                        style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                    >
+                        {ach.rank.toUpperCase()}
+                    </div>
+                    <div className="text-[#0a0a0a] text-[14px] font-bold leading-snug mb-1">{ach.event}</div>
+                    <div className="text-[11px] text-[#0a0a0a] font-dm-mono font-bold mb-1.5 opacity-80">{ach.detail}</div>
+                    <div className="text-[13px] text-[#0a0a0a] leading-relaxed font-medium">{ach.project}</div>
                   </div>
                 </div>
               </motion.div>
@@ -461,38 +472,43 @@ export default function AboutPage() {
             </div>
           </motion.div>
 
-          <div className="relative pl-8 border-l-2 border-neutral-100 space-y-6">
+          <div className="relative pl-8 border-l-[4px] border-[#0a0a0a] space-y-8">
             {education.map((edu, i) => (
               <motion.div key={i} variants={fadeUp} className="relative group">
-                <div className={`absolute -left-[42px] top-4 w-4 h-4 rounded-full border-2 shadow-sm transition-all duration-300 group-hover:scale-125 ${edu.isCurrent
-                  ? 'bg-[#00c37b] border-[#00c37b] shadow-[#00c37b]/30'
-                  : 'bg-white border-neutral-300 group-hover:border-[#00c37b]'
+                <div className={`absolute -left-[46px] top-4 w-6 h-6 border-[3px] border-[#0a0a0a] transition-all duration-300 group-hover:scale-110 ${edu.isCurrent
+                  ? 'bg-[#00e060] shadow-[3px_3px_0_#0a0a0a]'
+                  : 'bg-white shadow-[2px_2px_0_#0a0a0a]'
                   }`}
                 />
-                <div className="bg-white border border-neutral-100 rounded-2xl p-5 shadow-sm hover:shadow-md hover:border-[#00c37b]/30 transition-all duration-300">
-                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1.5">
+                <div className="bg-[#f5f5f0] border-[4px] border-[#0a0a0a] p-5 shadow-[6px_6px_0_#0a0a0a] hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0_#0a0a0a] transition-all duration-200">
+                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 border-b-[3px] border-[#0a0a0a] pb-3 mb-3">
                     <div>
-                      <h3 className="font-bold text-neutral-900 text-[15px]">{edu.degree}</h3>
-                      <p className="text-[13px] text-neutral-500 mt-0.5">{edu.institution}</p>
-                      {edu.skills && (
-                        <div className="flex flex-wrap gap-1.5 mt-3">
-                          {edu.skills.map((skill) => (
-                            <span key={skill} className="px-2 py-0.5 text-[10px] font-dm-mono bg-neutral-100 text-neutral-600 border border-neutral-200 rounded-full">
-                              {skill}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                      <h3 
+                          className="text-2xl md:text-3xl text-[#0a0a0a] tracking-wide"
+                          style={{ fontFamily: 'var(--font-bebas-neue)' }}
+                      >
+                          {edu.degree.toUpperCase()}
+                      </h3>
+                      <p className="text-[13px] text-[#0a0a0a] font-dm-mono font-bold mt-1">{edu.institution}</p>
                     </div>
                     <div className="flex items-center gap-2 shrink-0 mt-2 sm:mt-0">
                       {edu.isCurrent && (
-                        <span className="text-[9px] font-dm-mono tracking-widest text-[#00894d] uppercase bg-[#00c37b]/10 px-2 py-0.5 rounded-full">
-                          Current
+                        <span className="text-[11px] font-dm-mono font-bold tracking-widest text-[#0a0a0a] uppercase bg-[#00e060] px-2 py-0.5 border-2 border-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a]">
+                          ● Current
                         </span>
                       )}
-                      <span className="text-xs font-dm-mono text-neutral-400">{edu.year}</span>
+                      <span className="text-[12px] font-dm-mono font-bold text-[#0a0a0a] border-2 border-[#0a0a0a] px-2 py-0.5 shadow-[2px_2px_0_#0a0a0a] bg-white">{edu.year}</span>
                     </div>
                   </div>
+                  {edu.skills && (
+                    <div className="flex flex-wrap gap-2 pt-1">
+                      {edu.skills.map((skill) => (
+                        <span key={skill} className="px-2 py-1 text-[10px] font-bold uppercase tracking-wider font-dm-mono bg-white text-[#0a0a0a] border-2 border-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a]">
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </motion.div>
             ))}

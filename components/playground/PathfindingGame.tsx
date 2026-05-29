@@ -303,25 +303,25 @@ export default function PathfindingGame() {
   return (
     <div className="flex flex-col h-full w-full max-h-full" onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
       {/* Controls */}
-      <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center bg-neutral-950 p-4 rounded-xl border border-neutral-800 mb-6 gap-4 z-10 shrink-0">
+      <div className="flex flex-col xl:flex-row justify-between items-start xl:items-center bg-white p-5 border-[4px] border-[#0a0a0a] shadow-[8px_8px_0_#0a0a0a] mb-8 gap-4 z-10 shrink-0 relative">
         <div>
-          <h2 className="text-xl font-orbitron font-bold text-white">Algorithm Visualizer</h2>
-          <p className="text-xs text-neutral-400 font-dm-mono">Compare search algorithms in real-time.</p>
+          <h2 className="text-4xl text-[#0a0a0a] leading-none" style={{ fontFamily: 'var(--font-bebas-neue)' }}>Algorithm Visualizer</h2>
+          <p className="text-[13px] text-[#0a0a0a] font-dm-mono font-bold mt-1 uppercase tracking-widest">Compare search algorithms in real-time.</p>
         </div>
         
         <div className="flex flex-col xl:flex-row items-end xl:items-center gap-4 w-full xl:w-auto">
             
             {/* Algorithm Selector */}
-            <div className="flex flex-row items-center bg-neutral-900 p-1 rounded-lg border border-neutral-800 w-full xl:w-auto overflow-x-auto shrink-0 h-fit">
+            <div className="flex flex-row items-center bg-white p-1 border-[3px] border-[#0a0a0a] shadow-[4px_4px_0_#0a0a0a] w-full xl:w-auto overflow-x-auto shrink-0 h-fit">
                 {(['astar', 'dijkstra', 'greedy', 'bfs', 'dfs'] as AlgorithmType[]).map((alg) => (
                     <button
                         key={alg}
                         onClick={() => !isRunning && setAlgorithm(alg)}
                         disabled={isRunning}
-                        className={`px-3 py-1.5 text-xs font-bold font-dm-mono rounded-md whitespace-nowrap transition-colors h-8 flex items-center justify-center ${
+                        className={`px-4 py-2 text-[12px] font-bold font-dm-mono uppercase tracking-widest whitespace-nowrap transition-colors h-8 flex items-center justify-center ${
                             algorithm === alg 
-                                ? 'bg-[#00c37b] text-black shadow-[0_0_10px_rgba(0,195,123,0.3)]' 
-                                : 'text-neutral-500 hover:text-neutral-300 hover:bg-neutral-800'
+                                ? 'bg-[#0a0a0a] text-white' 
+                                : 'text-[#0a0a0a] hover:bg-[#f5f5f0]'
                         }`}
                     >
                         {alg === 'astar' ? 'A*' : alg.toUpperCase()}
@@ -334,37 +334,35 @@ export default function PathfindingGame() {
                     <button
                         onClick={clearGrid}
                         disabled={isRunning}
-                        className="px-4 py-2 rounded-lg font-bold text-sm tracking-wider transition-all text-neutral-400 bg-neutral-900 border border-neutral-800 hover:bg-neutral-800 hover:text-white disabled:opacity-50"
+                        className="px-6 py-2 border-[3px] border-[#0a0a0a] text-[12px] font-bold font-dm-mono uppercase tracking-widest transition-all bg-white text-[#0a0a0a] shadow-[4px_4px_0_#0a0a0a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0_#0a0a0a] disabled:opacity-50"
                     >
                         CLEAR
                     </button>
                     <button
                         onClick={runAlgorithm}
                         disabled={isRunning}
-                        className={`px-6 py-2 rounded-lg font-bold text-sm tracking-wider transition-all shadow-lg min-w-[140px] whitespace-nowrap ${
+                        className={`px-6 py-2 border-[3px] border-[#0a0a0a] font-bold font-dm-mono uppercase tracking-widest text-[13px] transition-all min-w-[140px] whitespace-nowrap ${
                             isRunning 
-                            ? 'bg-[#00c37b]/50 text-neutral-900 border border-[#00c37b]/50 cursor-not-allowed' 
-                            : 'bg-[#00c37b] text-neutral-950 border border-[#00c37b] hover:bg-[#00e87a] shadow-[#00c37b]/20'
+                            ? 'bg-[#e5e5e5] text-neutral-400 cursor-not-allowed shadow-[4px_4px_0_#0a0a0a]' 
+                            : 'bg-[#00e060] text-[#0a0a0a] shadow-[4px_4px_0_#0a0a0a] hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[6px_6px_0_#0a0a0a]'
                         }`}
                     >
                         {isRunning ? 'SEARCHING...' : `START ${algorithm === 'astar' ? 'A*' : algorithm.toUpperCase()}`}
                     </button>
                 </div>
 
-                <div className="flex gap-4 ml-2">
+                <div className="flex gap-4 ml-2 border-[3px] border-[#0a0a0a] bg-white px-3 py-1.5 shadow-[4px_4px_0_#0a0a0a]">
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 bg-[#00c37b]/20 border border-[#00c37b]" />
-                        <span className="text-[10px] text-neutral-500 font-dm-mono uppercase">Visited: {stats.visited}</span>
+                        <div className="w-3 h-3 bg-[#e5e5e5] border-2 border-[#0a0a0a]" />
+                        <span className="text-[11px] text-[#0a0a0a] font-bold font-dm-mono uppercase">Visited: {stats.visited}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 bg-white" />
-                        <span className="text-[10px] text-neutral-500 font-dm-mono uppercase">Path: {stats.pathLength}</span>
+                        <div className="w-3 h-3 bg-[#f5e642] border-2 border-[#0a0a0a]" />
+                        <span className="text-[11px] text-[#0a0a0a] font-bold font-dm-mono uppercase">Path: {stats.pathLength}</span>
                     </div>
                     <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 bg-neutral-800 flex items-center justify-center border border-neutral-700">
-                            <span className="text-[8px]">⏱️</span>
-                        </div>
-                        <span className="text-[10px] text-neutral-500 font-dm-mono uppercase">{stats.executionTimeMs}ms</span>
+                        <span className="text-[10px] uppercase font-bold font-dm-mono text-[#0a0a0a]">Time:</span>
+                        <span className="text-[11px] text-[#0a0a0a] font-bold font-dm-mono uppercase">{stats.executionTimeMs}ms</span>
                     </div>
                 </div>
             </div>
@@ -372,10 +370,10 @@ export default function PathfindingGame() {
       </div>
 
       {/* Grid Arena */}
-      <div className="flex-grow relative bg-neutral-950/50 rounded-xl border border-neutral-800/50 p-4 md:p-8 flex items-center justify-center overflow-hidden min-h-[600px]">
+      <div className="flex-grow relative bg-[#f5f5f0] border-[4px] border-[#0a0a0a] shadow-[inset_8px_8px_0_rgba(0,0,0,0.05)] p-4 md:p-8 flex items-center justify-center overflow-hidden min-h-[600px]">
         {grid.length > 0 && (
             <div 
-                className="bg-neutral-900/50 border border-neutral-800 rounded-lg overflow-hidden touch-none"
+                className="bg-white border-[4px] border-[#0a0a0a] shadow-[8px_8px_0_#0a0a0a] overflow-hidden touch-none"
                 style={{ 
                     display: 'grid', 
                     gridTemplateColumns: `repeat(${COLS}, minmax(0, 1fr))` 
@@ -384,14 +382,14 @@ export default function PathfindingGame() {
             >
                 {grid.map((row, rowIdx) => (
                     row.map((node, colIdx) => {
-                        let cellClasses = "w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 border-[0.5px] border-neutral-800 transition-colors duration-200 cursor-pointer ";
+                        let cellClasses = "w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 border-[0.5px] border-[#0a0a0a]/20 transition-colors duration-200 cursor-pointer ";
                         
-                        if (node.isStart) cellClasses += "bg-blue-500 !border-blue-400 rounded-sm scale-110 z-10 shadow-[0_0_10px_rgba(59,130,246,0.8)] ";
-                        else if (node.isEnd) cellClasses += "bg-red-500 !border-red-400 rounded-sm scale-110 z-10 shadow-[0_0_10px_rgba(239,68,68,0.8)] ";
-                        else if (node.isWall) cellClasses += "bg-neutral-700 !border-neutral-600 scale-105 ";
-                        else if (node.isPath) cellClasses += "bg-white !border-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-10 transition-all duration-300 ";
-                        else if (node.isVisited) cellClasses += "bg-[#00c37b]/20 border-[#00c37b]/30 transition-all duration-500 ";
-                        else cellClasses += "hover:bg-neutral-800";
+                        if (node.isStart) cellClasses += "bg-[#00e060] !border-[2px] !border-[#0a0a0a] scale-110 z-10 shadow-[2px_2px_0_#0a0a0a] ";
+                        else if (node.isEnd) cellClasses += "bg-red-500 !border-[2px] !border-[#0a0a0a] scale-110 z-10 shadow-[2px_2px_0_#0a0a0a] ";
+                        else if (node.isWall) cellClasses += "bg-[#0a0a0a] !border-[#0a0a0a] scale-105 z-10 shadow-[2px_2px_0_#0a0a0a] ";
+                        else if (node.isPath) cellClasses += "bg-[#f5e642] !border-[2px] !border-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a] z-10 transition-all duration-300 scale-105 ";
+                        else if (node.isVisited) cellClasses += "bg-[#e5e5e5] !border-[#0a0a0a]/50 transition-all duration-500 ";
+                        else cellClasses += "bg-white hover:bg-[#f5f5f0] hover:!border-[2px] hover:!border-[#0a0a0a] z-20 ";
 
                         return (
                             <div 
