@@ -108,7 +108,7 @@ export default function PathfindingGame() {
     setStats({ visited: 0, pathLength: 0, executionTimeMs: 0 });
 
     // Reset visited and path states but keep walls
-    const cleanGrid = grid.map(row => row.map(node => ({
+    const cleanGrid: NodeType[][] = grid.map(row => row.map(node => ({
         ...node, 
         isVisited: false, 
         isPath: false, 
