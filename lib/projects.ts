@@ -15,49 +15,75 @@ export interface Project {
 export const PROJECTS: Record<string, Project> = {
   '1': {
     id: '1',
-    title: 'Event Ingestion & Analytics Platform',
-    subtitle: 'High-throughput, multi-tenant event ingestion service written in Go',
-    description: 'This project is a high-throughput, multi-tenant event ingestion service written in Go designed to accept user-activity events at scale and stream them into Apache Kafka. It serves as the gateway for an event-driven analytics pipeline, validating incoming JSON payloads and returning instant 202 Accepted acknowledgments to minimize client-facing latency. The platform is configured for local development via Docker Compose with a full infrastructure stack including Kafka (KRaft mode), TimescaleDB (for time-series historical data), Redis (for deduplication and real-time counts), and Kafka UI.',
-    category: 'Backend / Systems',
-    techStack: ['Go', 'Chi', 'Kafka', 'TimescaleDB', 'Redis', 'Docker'],
+    title: 'Multilingual AI Banking Kiosk',
+    subtitle: 'Real-time voice-activated secure banking infrastructure',
+    description: 'An end-to-end voice-activated banking kiosk designed to serve rural users across 3 regional dialects (English, Hinglish, Tanglish). It features a real-time WebSocket streaming pipeline using Deepgram Nova-3 for sub-100ms Speech-to-Text conversion, paired with a Redis-backed slot-filling state machine for dialogue management. The system integrates multimodal capabilities using Gemini Vision OCR to parse physical Aadhaar and PAN cards with >95% accuracy for automated onboarding, and includes a seamless escalation gateway that transfers low-confidence interactions to human support with full session telemetry preserved.',
+    category: 'Voice AI / Full-Stack',
+    techStack: ['Next.js', 'WebSockets', 'Redis', 'PostgreSQL', 'Deepgram', 'Gemini Vision'],
     techConcepts: [
-      'Asynchronous Decoupling via Kafka',
-      'Consistent Partition Hashing (tenant_id)',
-      'Producer Throughput Tuning & Snappy compression',
-      'Graceful Shutdown & Signal Trapping',
-      'Structured Middleware Architecture'
+      'Ultra-Low Latency Audio Streaming',
+      'Slot-Filling State Machines (Redis)',
+      'Multimodal Document OCR',
+      'Warm Escalation Handoff Architecture',
+      'Confidence-Score Dialect Gating'
     ],
     bulletPoints: [
-      '**Engineered a high-throughput event ingestion API in Go** using the **Chi** router and structured logging (slog), exposing validation endpoints capable of ingesting single and bulk events with sub-millisecond route latency.',
-      '**Architected Kafka-based event streaming** with partition hashing on tenant IDs to guarantee strict in-order message delivery per tenant, and tuned producer settings (**Snappy compression, batch size/timeouts**) to optimize bandwidth efficiency.',
-      '**Built resilient system lifecycle management** by trapping **Unix signals (SIGINT, SIGTERM)**, allowing the service to gracefully drain active HTTP connections and flush buffered Kafka writer queues to guarantee zero data loss during container restarts.'
+      '**Built an end-to-end voice-activated AI application** allowing users to complete secure transactions across 3 regional dialects.',
+      '**Prototyped new forms of human-AI interaction** via a Redis-backed state machine, achieving sub-100ms voice response times.',
+      '**Optimized data flow** by extracting structured data from physical Aadhaar cards with >95% accuracy via Gemini Vision OCR.',
+      '**Designed an escalation gateway** that transfers complex interactions to human support, ensuring high adaptability and user trust.'
     ],
     color: '#00ff88',
     image: '/mockup.png',
   },
   '2': {
     id: '2',
-    title: 'Virtual Classroom with ISL Support',
-    subtitle: 'Real-time speech-to-gesture accessibility pipeline',
-    description: 'An end-to-end, real-time speech-to-gesture accessibility pipeline that translates spoken classroom lectures into synchronized Indian Sign Language (ISL) 3D avatar animations. The system ingests streaming audio, processes it through local Whisper ASR models, and translates the transcribed English into structured ISL Glosses using a multi-tiered translation engine (PyTorch Seq2Seq LSTM with Attention, falling back to a Java Stanford Parser syntax analyzer, and a heuristics stop-word/lemmatizer pipeline). The system features an active learning loop that captures user corrections in a local SQLite database for model retraining, operates containerized via Docker and Kubernetes, and displays synchronized playback timeline streams on a Materialize-based frontend.',
-    category: 'AI / Accessibility',
-    techStack: ['Python', 'PyTorch', 'Whisper ASR', 'Java', 'Docker', 'Kubernetes'],
+    title: 'Distributed AI Math Video Engine',
+    subtitle: 'Scalable automated educational media generation pipeline',
+    description: 'A scalable Python engine that programmatically converts complex educational concepts into fully animated, narrated math explanation videos. The distributed architecture utilizes Celery across 4 isolated task queues (scripting, rendering, voice synthesis, and stitching) with MinIO S3 storage to ensure fault-tolerant parallel processing. It features exceptional security engineering via a custom AST-based static analyzer that safely sandboxes LLM-generated Manim code to prevent RCE attacks. The system achieves frame-perfect AV synchronization using dynamically injected FFmpeg setpts filters over Socket.io.',
+    category: 'Distributed Systems / GenAI',
+    techStack: ['Python', 'Celery', 'Redis', 'FastAPI', 'Manim', 'FFmpeg', 'Socket.io'],
     techConcepts: [
-      'Multi-Tiered Translation Pipeline (AI + Deterministic Fallbacks)',
-      'Asynchronous Audio & Ingestion pipeline',
-      'Continuous Retraining & Active Learning Loop',
-      'Production Operations & Telemetry'
+      'Distributed Task Queues (Celery/Redis)',
+      'AST-Based Code Sandboxing (Security)',
+      'Algorithmic AV Synchronization',
+      'Self-Healing LLM Compile Loops',
+      'Object Storage Infrastructure (MinIO)'
     ],
     bulletPoints: [
-      '**Engineered a real-time speech-to-sign language translation pipeline** using PyTorch and Flask, transcribing spoken audio via Whisper ASR and generating synchronized 3D avatar sign animations for educational accessibility.',
-      '**Designed a resilient, multi-tiered translation compiler** utilizing a Sequence-to-Sequence LSTM with Attention, an automated fallback to a Java-based Stanford Dependency Parser, and heuristic finger-spelling fallbacks.',
-      '**Built an active learning MLOps framework** with a SQLite annotation datastore to collect user translation feedback, automated MLOps training harnesses, and deployed the highly available architecture using Docker and Kubernetes.'
+      '**Developed a scalable Python engine** that converts complex educational concepts into fully animated, narrated math explanation videos.',
+      '**Integrated AI reasoning tightly with backend infrastructure**, safely sandboxing LLM-generated code to prevent RCE attacks.',
+      '**Iterated on agent performance** by building an auto-correction loop that feeds runtime errors back to the LLM for self-healing.',
+      '**Achieved frame-perfect AV sync** by dynamically adjusting video playback speeds using an FFmpeg setpts filter over Socket.io.'
     ],
     color: '#00e5ff',
     image: '/mockup.png',
   },
   '3': {
     id: '3',
+    title: 'AI Civic Grievance Platform',
+    subtitle: 'Geospatial routing and automated compliance system',
+    description: 'A Turborepo-based civic management platform that automatically routes citizen complaints to the correct municipal ward for rapid resolution. The system utilizes advanced geospatial routing via PostGIS spatial buffers and implements Gemini semantic clustering to deduplicate identical complaints geographically and contextually. It features robust distributed systems engineering, using mutex-locked cron workers to atomically enforce strict government SLAs, which auto-draft legal RTI documents upon deadline violations. Accessibility is expanded via a real-time multilingual voice agent integrating LiveKit WebRTC and Deepgram STT.',
+    category: 'Backend / Spatial Engineering',
+    techStack: ['Node.js', 'PostgreSQL', 'PostGIS', 'LiveKit', 'Deepgram', 'Turborepo'],
+    techConcepts: [
+      'Geospatial Data Engineering (PostGIS)',
+      'Semantic Clustering & Deduplication',
+      'Mutex-Locked Scheduled Cron Workers',
+      'Monorepo Architecture (Turborepo)',
+      'WebRTC Voice Pipelines'
+    ],
+    bulletPoints: [
+      '**Built an AI-powered civic platform** that routes citizen complaints to the correct municipal ward via an intelligent backend system.',
+      '**Developed robust retrieval systems** by integrating PostGIS spatial buffers and Gemini semantic clustering for deduplication.',
+      '**Enforced strict SLAs atomically** via cron workers, auto-drafting RTI documents to ensure compliance with government timelines.',
+      '**Deployed a real-time multilingual voice agent** integrating LiveKit WebRTC and Deepgram STT to expand intelligent user experiences.'
+    ],
+    color: '#ff3366',
+    image: '/mockup.png',
+  },
+  '4': {
+    id: '4',
     title: 'Multi-Agent Simulator',
     subtitle: 'Event-driven multi-agent simulation framework modeling an SDLC',
     description: 'This project is an advanced, event-driven multi-agent simulation framework that models an entire software development company lifecycle (SDLC). Users act as the CEO, writing a project brief. The orchestrator triggers specialized AI agents (CPO, CTO, CFO, Developers, QA Reviewers) to negotiate requirement documents, budget limits, design technical architectures, write parallel frontend/backend code, and test the implementation. The frontend provides a full web-based IDE experience, mounting the agent-written code inside a WebAssembly container to build, run, and review features entirely in the browser.',
@@ -71,77 +97,57 @@ export const PROJECTS: Record<string, Project> = {
       'Runaway Cost Safeguards & Resilient Retries'
     ],
     bulletPoints: [
-      '**Architected a multi-agent software engineering simulator** using **FastAPI**, **Redis Pub/Sub**, and **SQLAlchemy**, running automated SDLC state machines with deterministic review gates.',
-      '**Implemented an interactive browser-based IDE** utilizing **StackBlitz WebContainers (WASM)**, **Monaco Editor**, and **Xterm.js**, compiling and running agent-generated code sandboxed client-side.',
-      '**Engineered budget and runtime safeguards**, including a hard-stop monitor terminating agent pipelines at 95% budget consumption and a 2x automatic retry recovery loop for agent crashes.'
+      '**Designed and built an AI Agent application system** where specialized agents (CTO, Dev, QA) collaborate to build web applications.',
+      '**Developed complex reasoning workflows** and phase-gated review checkpoints using a scalable Redis Pub/Sub event bus.',
+      '**Iterated on agent capabilities** by enforcing strict token budgets and automatic retry loops to improve overall system reliability.',
+      '**Sandboxed agent-generated code client-side** using StackBlitz WebContainers (WASM) to prototype secure in-browser testing.'
     ],
     color: '#b300ff',
     image: '/mockup.png',
   },
-  '4': {
-    id: '4',
-    title: 'AI Sentiment Intelligence Platform',
-    subtitle: 'Full-stack data ingestion and analytical dashboard',
-    description: 'AI Sentiment Intelligence Platform is a full-stack data ingestion and analytical dashboard designed to aggregate public sentiment across Delhi\'s 70 Legislative Assembly constituencies. The platform processes raw text data from news RSS feeds, YouTube videos, and social media networks. It utilizes Hugging Face NLP transformers to extract sentiment scores and stores findings in a relational PostgreSQL database. A custom political forecasting engine runs statistical algorithms on constituency-level scores to predict electoral shifts and highlights civic complaints through a dedicated field-reporting CRUD system.',
-    category: 'Data Engineering / NLP',
-    techStack: ['React', 'Node.js', 'PostgreSQL', 'Hugging Face', 'Apify'],
-    techConcepts: [
-      'Asynchronous Ingestion Pipeline',
-      'NLP Sentiment Classification',
-      'Electoral Forecasting Engine',
-      'Relational Integrity at Scale',
-      'API Cache Strategy'
-    ],
-    bulletPoints: [
-      '**Architected a high-throughput sentiment analysis pipeline** (Node.js, PostgreSQL) parsing RSS news feeds, YouTube transcripts, and social media updates across 70 municipal zones.',
-      '**Integrated Hugging Face NLP models to classify sentiment metrics**, designing mathematical aggregation models to weight social media, news, and civic feedback into predictive metrics.',
-      '**Engineered robust background scraper tasks** using the Apify SDK and YouTube API, implementing dynamic request throttling and database query indexing to optimize retrieval speeds.'
-    ],
-    color: '#ff3366',
-    image: '/mockup.png',
-  },
   '5': {
     id: '5',
-    title: 'Bid Discovery System',
-    subtitle: 'Automated platform to scrape and analyze government bids',
-    description: 'An automated, production-grade full-stack system designed to scrape, extract, analyze, and rank government bids from the Government e-Marketplace (GeM). The system features a NestJS-based scheduling and ingestion server that uses Playwright for web scraping, downloads and extracts content from nested PDF attachments, and processes them using the Google Gemini File API for context-rich, multi-document semantic scoring. The results, keyword associations, and confidence metrics are persisted in a PostgreSQL database and visualized in real-time on a responsive Next.js 14 dashboard.',
-    category: 'Full-Stack / GenAI',
-    techStack: ['Next.js 14', 'NestJS', 'PostgreSQL', 'Playwright', 'Gemini API'],
+    title: 'Event Ingestion & Analytics Platform',
+    subtitle: 'High-throughput, multi-tenant event ingestion service written in Go',
+    description: 'This project is a high-throughput, multi-tenant event ingestion service written in Go designed to accept user-activity events at scale and stream them into Apache Kafka. It serves as the gateway for an event-driven analytics pipeline, validating incoming JSON payloads and returning instant 202 Accepted acknowledgments to minimize client-facing latency. The platform is configured for local development via Docker Compose with a full infrastructure stack including Kafka (KRaft mode), TimescaleDB (for time-series historical data), Redis (for deduplication and real-time counts), and Kafka UI.',
+    category: 'Backend / Systems Infrastructure',
+    techStack: ['Go', 'Chi', 'Kafka', 'TimescaleDB', 'Redis', 'Docker'],
     techConcepts: [
-      'Asynchronous Background Processing & Ingestion',
-      'Multimodal AI Integration (Gemini)',
-      'State Management & Data Caching (React Query)',
-      'Clean Architecture & Domain Separation',
-      'Relational Schema Design & ORM'
+      'Asynchronous Decoupling via Kafka',
+      'Consistent Partition Hashing (tenant_id)',
+      'Producer Throughput Tuning & Snappy compression',
+      'Graceful Shutdown & Signal Trapping',
+      'Structured Middleware Architecture'
     ],
     bulletPoints: [
-      '**Engineered a full-stack automated bid discovery platform** using Next.js 14, NestJS, and PostgreSQL, processing hundreds of government bids daily and reducing manual verification effort by **90%**.',
-      '**Implemented an intelligent PDF ingestion pipeline** utilizing Playwright for dynamic web scraping and the Google Gemini File API to analyze complex, multi-page parent/child specification documents, achieving accurate relevance scoring.',
-      '**Developed a robust asynchronous backend** with NestJS and TypeORM, configuring Docker containerization for reliable deployments and utilizing React Query on the frontend for optimized data fetching and state caching.'
+      '**Engineered a high-throughput event ingestion API in Go** using the Chi router and structured logging, exposing validation endpoints with sub-millisecond route latency.',
+      '**Architected Kafka-based event streaming** with partition hashing on tenant IDs to guarantee strict in-order message delivery per tenant.',
+      '**Built resilient system lifecycle management** by trapping Unix signals (SIGINT, SIGTERM), allowing the service to gracefully drain active HTTP connections and flush buffered Kafka queues.'
     ],
-    color: '#ffaa00',
+    color: '#0066ff',
     image: '/mockup.png',
   },
   '6': {
     id: '6',
-    title: 'Lead Generation System',
-    subtitle: 'Automated government official lead generation platform',
-    description: 'An automated government official lead generation and transactional outreach platform. The backend is designed with a Clean Architecture approach in Python (FastAPI), showcasing Dependency Injection and SOLID principles. It crawls target domains, extracts public contact records from complex layouts and PDFs using BeautifulSoup and pdfplumber, structures the unstructured details via the OpenAI API, and validates the leads against custom business rules. It exports lead packages to Excel files, integrates with SendGrid SMTP to automate transactional email outreach, and exposes a high-throughput webhook listener to consume real-time delivery and open events to persist email interaction metrics in PostgreSQL.',
-    category: 'Full-Stack / Architecture',
-    techStack: ['FastAPI', 'React', 'PostgreSQL', 'OpenAI', 'SendGrid'],
+    title: 'Intelli-Credit Engine (Credex)',
+    subtitle: 'AI credit risk platform with financial digital twin stress testing',
+    description: 'An advanced AI-powered credit risk platform that builds financial digital twins to simulate stress testing (DSCR/ICR) under various macroeconomic revenue shocks. The backend is an asynchronous FastAPI service integrating state-of-the-art Document AI via Microsoft Table Transformer to parse scanned balance sheets. It leverages FinBERT for NLP-based risk sentiment analysis on financial news and applies SHAP (SHapley Additive exPlanations) to provide mathematically explainable credit scorecards. It also cross-verifies bank statements with GSTR records to detect fraud anomalies.',
+    category: 'Fintech / Machine Learning',
+    techStack: ['FastAPI', 'FinBERT', 'Table Transformer', 'PostgreSQL', 'SHAP'],
     techConcepts: [
-      'Clean Architecture & Dependency Injection',
-      'Data Ingestion & Scraping Engine',
-      'REST & Event-driven Webhook Listeners',
-      'Database Schema Migration & ORM',
-      'Real-time API Updates via WebSockets'
+      'Financial Digital Twin Simulation',
+      'State-of-the-Art OCR (Table Transformer)',
+      'Model Explainability (SHAP Overlays)',
+      'Asynchronous Database Pooling (asyncpg)',
+      'NLP Sentiment Risk Scoring'
     ],
     bulletPoints: [
-      '**Designed and developed a lead generation system** using FastAPI (Python) and React, adhering to Clean Architecture and SOLID principles to achieve a highly modular and extensible codebase.',
-      '**Built a robust web crawling and text extraction engine** using BeautifulSoup, pdfplumber, and the OpenAI API, processing and parsing government websites/documents to extract and validate official contact leads.',
-      '**Integrated SendGrid SMTP services with asynchronous webhook listeners** to manage transactional email campaigns, automatically tracking delivery and open states in a PostgreSQL database.'
+      '**Architected an asynchronous FastAPI backend** to simulate financial stress-testing and digital twin generation for credit risk modeling.',
+      '**Integrated state-of-the-art Document AI** using Microsoft Table Transformer to accurately parse complex, unstructured balance sheets.',
+      '**Implemented SHAP explainability overlays** on top of credit scorecards to provide mathematically transparent risk assessments.',
+      '**Deployed FinBERT NLP models** to analyze market sentiment and dynamically flag potential financial anomalies and fraud indicators.'
     ],
-    color: '#0066ff',
+    color: '#ffaa00',
     image: '/mockup.png',
   },
 };
