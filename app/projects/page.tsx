@@ -77,6 +77,7 @@ export default function ProjectsPage() {
                   category={project.category}
                   techStack={project.techStack}
                   color={project.color}
+                  githubUrl={project.githubUrl}
                   onClick={() => setSelectedProject(project)}
                 />
               </motion.div>

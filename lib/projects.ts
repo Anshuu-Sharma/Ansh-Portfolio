@@ -10,6 +10,7 @@ export interface Project {
   liveUrl?: string;
   color: string;
   image: string;
+  githubUrl: string;
 }
 
 export const PROJECTS: Record<string, Project> = {
@@ -35,6 +36,7 @@ export const PROJECTS: Record<string, Project> = {
     ],
     color: '#00ff88',
     image: '/mockup.png',
+    githubUrl: 'https://github.com/Anshuu-Sharma/bankseva-ai',
   },
   '2': {
     id: '2',
@@ -58,6 +60,7 @@ export const PROJECTS: Record<string, Project> = {
     ],
     color: '#00e5ff',
     image: '/mockup.png',
+    githubUrl: 'https://github.com/Anshuu-Sharma/3blue1brown-by-prompts',
   },
   '3': {
     id: '3',
@@ -81,6 +84,7 @@ export const PROJECTS: Record<string, Project> = {
     ],
     color: '#ff3366',
     image: '/mockup.png',
+    githubUrl: 'https://github.com/Anshuu-Sharma/civic-tech',
   },
   '4': {
     id: '4',
@@ -104,6 +108,7 @@ export const PROJECTS: Record<string, Project> = {
     ],
     color: '#b300ff',
     image: '/mockup.png',
+    githubUrl: 'https://github.com/Anshuu-Sharma/Multi-agent-SaaS-builder',
   },
   '5': {
     id: '5',
@@ -126,6 +131,7 @@ export const PROJECTS: Record<string, Project> = {
     ],
     color: '#0066ff',
     image: '/mockup.png',
+    githubUrl: 'https://github.com/Anshuu-Sharma/Event-ingestion-Analytics-Platform',
   },
   '6': {
     id: '6',
@@ -149,6 +155,7 @@ export const PROJECTS: Record<string, Project> = {
     ],
     color: '#ffaa00',
     image: '/mockup.png',
+    githubUrl: 'https://github.com/Anshuu-Sharma/credex',
   },
 };
 
