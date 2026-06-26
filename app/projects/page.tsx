@@ -5,9 +5,12 @@ import ProjectCard from '@/components/ui/ProjectCard';
 import { motion } from 'framer-motion';
 import { PROJECTS, PROJECT_IDS, Project } from '@/lib/projects';
 import ProjectDetailModal from '@/components/ui/ProjectDetailModal';
+import { usePreloadProjectMedia } from '@/lib/usePreloadProjectMedia';
 
 export default function ProjectsPage() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  usePreloadProjectMedia();
+
 
   return (
     <main className="relative min-h-screen bg-[#fafaf9] text-black pt-36 pb-32 px-4 overflow-hidden font-inter">
