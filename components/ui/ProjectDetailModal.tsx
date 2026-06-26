@@ -1,8 +1,117 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Project } from '@/lib/projects';
+
+const ProjectMediaCarousel = ({ media, color }: { media: NonNullable<Project['media']>; color: string }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const next = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentIndex((prev) => (prev + 1) % media.length); };
+  const prev = (e?: React.MouseEvent) => { e?.stopPropagation(); setCurrentIndex((prev) => (prev - 1 + media.length) % media.length); };
+
+  if (!media || media.length === 0) return null;
+
+  return (
+    <>
+      <div 
+        className="relative w-full aspect-video border-[4px] border-[#0a0a0a] bg-black mb-8 group overflow-hidden shadow-[8px_8px_0_#0a0a0a] cursor-pointer"
+        onClick={() => setIsFullScreen(true)}
+      >
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-full"
+          >
+            {media[currentIndex].type === 'image' ? (
+              <img src={media[currentIndex].url} alt={`Media ${currentIndex + 1}`} className="w-full h-full object-contain" />
+            ) : (
+              <video src={media[currentIndex].url} autoPlay loop muted playsInline className="w-full h-full object-contain pointer-events-none" />
+            )}
+          </motion.div>
+        </AnimatePresence>
+        
+        {media.length > 1 && (
+          <>
+            <button onClick={prev} className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#f5f5f0] border-2 border-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a] flex items-center justify-center hover:bg-[#e8180a] hover:text-[#f5e642] transition-colors z-10 opacity-0 group-hover:opacity-100">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+            </button>
+            <button onClick={next} className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[#f5f5f0] border-2 border-[#0a0a0a] shadow-[2px_2px_0_#0a0a0a] flex items-center justify-center hover:bg-[#e8180a] hover:text-[#f5e642] transition-colors z-10 opacity-0 group-hover:opacity-100">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+            </button>
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10" onClick={(e) => e.stopPropagation()}>
+              {media.map((_, idx) => (
+                <button 
+                  key={idx} 
+                  onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
+                  className={`w-3 h-3 border-2 border-[#0a0a0a] ${currentIndex === idx ? 'bg-[#f5e642]' : 'bg-[#f5f5f0]'}`}
+                  style={{ backgroundColor: currentIndex === idx ? color : '#f5f5f0' }}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      <AnimatePresence>
+        {isFullScreen && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 backdrop-blur-md"
+            onClick={() => setIsFullScreen(false)}
+          >
+            <button 
+              onClick={(e) => { e.stopPropagation(); setIsFullScreen(false); }}
+              className="absolute top-6 right-6 z-50 w-12 h-12 bg-[#0a0a0a] border-2 border-white/20 hover:bg-[#e8180a] hover:border-[#0a0a0a] flex items-center justify-center transition-colors text-white hover:text-[#f5e642] shadow-[4px_4px_0_#000]"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            </button>
+
+            <div 
+              className="relative w-full max-w-7xl aspect-video p-4 md:p-8 flex items-center justify-center"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-full h-full flex items-center justify-center"
+                >
+                  {media[currentIndex].type === 'image' ? (
+                    <img src={media[currentIndex].url} alt={`Media ${currentIndex + 1}`} className="max-w-full max-h-full object-contain border-[4px] border-[#333]" />
+                  ) : (
+                    <video src={media[currentIndex].url} autoPlay loop muted playsInline controls className="max-w-full max-h-full object-contain border-[4px] border-[#333]" />
+                  )}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {media.length > 1 && (
+              <>
+                <button onClick={prev} className="absolute left-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-[#0a0a0a] border-2 border-white/20 shadow-[4px_4px_0_#000] flex items-center justify-center hover:bg-[#e8180a] hover:border-[#0a0a0a] text-white hover:text-[#f5e642] transition-colors z-10">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
+                </button>
+                <button onClick={next} className="absolute right-6 top-1/2 -translate-y-1/2 w-14 h-14 bg-[#0a0a0a] border-2 border-white/20 shadow-[4px_4px_0_#000] flex items-center justify-center hover:bg-[#e8180a] hover:border-[#0a0a0a] text-white hover:text-[#f5e642] transition-colors z-10">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
+                </button>
+              </>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};
 
 interface ProjectDetailModalProps {
   project: Project | null;
@@ -121,6 +230,9 @@ export default function ProjectDetailModal({ project, isOpen, onClose }: Project
               className="overflow-y-auto p-6 md:p-8 pt-6 flex-1 min-h-0 [&::-webkit-scrollbar]:w-3 [&::-webkit-scrollbar-track]:bg-[#f5f5f0] [&::-webkit-scrollbar-thumb]:bg-[#0a0a0a] [&::-webkit-scrollbar-thumb]:border-2 [&::-webkit-scrollbar-thumb]:border-[#f5f5f0]" 
               data-lenis-prevent="true"
             >
+              {project.media && project.media.length > 0 && (
+                <ProjectMediaCarousel media={project.media} color={project.color} />
+              )}
               <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-10">
                 {/* Left Column */}
                 <div className="space-y-10">

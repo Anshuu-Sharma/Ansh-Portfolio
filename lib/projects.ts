@@ -11,6 +11,7 @@ export interface Project {
   color: string;
   image: string;
   githubUrl: string;
+  media?: { type: 'image' | 'video'; url: string }[];
 }
 
 export const PROJECTS: Record<string, Project> = {
@@ -37,6 +38,11 @@ export const PROJECTS: Record<string, Project> = {
     color: '#00ff88',
     image: '/mockup.png',
     githubUrl: 'https://github.com/Anshuu-Sharma/bankseva-ai',
+    media: [
+      { type: 'video', url: '/projects_info/bankseva/BharatVeer_iDEA2_0.mp4' },
+      { type: 'image', url: '/projects_info/bankseva/demo2.png' },
+      { type: 'image', url: '/projects_info/bankseva/demo3.png' }
+    ],
   },
   '2': {
     id: '2',
@@ -61,6 +67,12 @@ export const PROJECTS: Record<string, Project> = {
     color: '#00e5ff',
     image: '/mockup.png',
     githubUrl: 'https://github.com/Anshuu-Sharma/3blue1brown-by-prompts',
+    media: [
+      { type: 'video', url: '/projects_info/DISTRIBUTED_AI_MATH_VIDEO_ENGINE/final.mp4' },
+      { type: 'image', url: '/projects_info/DISTRIBUTED_AI_MATH_VIDEO_ENGINE/Screenshot_2026-06-25_at_10.31.12_PM.png' },
+      { type: 'image', url: '/projects_info/DISTRIBUTED_AI_MATH_VIDEO_ENGINE/Screenshot_2026-06-25_at_10.31.24_PM.png' },
+      { type: 'image', url: '/projects_info/DISTRIBUTED_AI_MATH_VIDEO_ENGINE/Screenshot_2026-06-25_at_10.53.24_PM.png' }
+    ],
   },
   '3': {
     id: '3',
@@ -85,6 +97,15 @@ export const PROJECTS: Record<string, Project> = {
     color: '#ff3366',
     image: '/mockup.png',
     githubUrl: 'https://github.com/Anshuu-Sharma/civic-tech',
+    media: [
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_12.47.23_PM.png' },
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_12.48.26_PM.png' },
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_12.48.59_PM.png' },
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_12.49.05_PM.png' },
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_1.01.04_PM.png' },
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_1.16.46_PM.png' },
+      { type: 'image', url: '/projects_info/civic_tech/Screenshot_2026-06-26_at_1.18.32_PM.png' }
+    ],
   },
   '4': {
     id: '4',
@@ -109,6 +130,13 @@ export const PROJECTS: Record<string, Project> = {
     color: '#b300ff',
     image: '/mockup.png',
     githubUrl: 'https://github.com/Anshuu-Sharma/Multi-agent-SaaS-builder',
+    media: [
+      { type: 'image', url: '/projects_info/Multi_Agent_system/Screenshot_2026-06-26_at_12.33.18_PM.png' },
+      { type: 'image', url: '/projects_info/Multi_Agent_system/Screenshot_2026-06-26_at_12.33.36_PM.png' },
+      { type: 'image', url: '/projects_info/Multi_Agent_system/Screenshot_2026-06-26_at_12.33.43_PM.png' },
+      { type: 'image', url: '/projects_info/Multi_Agent_system/Screenshot_2026-06-26_at_12.33.48_PM.png' },
+      { type: 'image', url: '/projects_info/Multi_Agent_system/Screenshot_2026-06-26_at_12.34.00_PM.png' }
+    ],
   },
   '5': {
     id: '5',
@@ -156,6 +184,18 @@ export const PROJECTS: Record<string, Project> = {
     color: '#ffaa00',
     image: '/mockup.png',
     githubUrl: 'https://github.com/Anshuu-Sharma/credex',
+    media: [
+      { type: 'video', url: '/projects_info/credex/credex.mp4' },
+      { type: 'image', url: '/projects_info/credex/page-1.png' },
+      { type: 'image', url: '/projects_info/credex/page-2.png' },
+      { type: 'image', url: '/projects_info/credex/page-3.png' },
+      { type: 'image', url: '/projects_info/credex/page-4.png' },
+      { type: 'image', url: '/projects_info/credex/page-5.png' },
+      { type: 'image', url: '/projects_info/credex/page-6.png' },
+      { type: 'image', url: '/projects_info/credex/page-7.png' },
+      { type: 'image', url: '/projects_info/credex/page-8.png' },
+      { type: 'image', url: '/projects_info/credex/page-9.png' }
+    ],
   },
 };
 
